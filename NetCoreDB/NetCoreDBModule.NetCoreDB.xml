@@ -1,0 +1,3028 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NetCoreDBModule.NetCoreDB</name>
+    </assembly>
+    <members>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool">
+            <summary>
+            数据库连接池，默认数据库连接方案是ODBC
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="connectionString">数据库连接字符串</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.#ctor(System.String,NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionType)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="connectionString">数据库连接字符串</param>
+            <param name="connType">数据库连接类型</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.#ctor(System.String,NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionType,System.Int32,System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="connectionString">数据库连接字符串</param>
+            <param name="connType">数据库连接类型</param>
+            <param name="maxConnection">最大连接数，最大可以创建的连接数目</param>
+            <param name="minConnection">最小连接数</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.#ctor(System.String,NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionType,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="connectionString">数据库连接字符串</param>
+            <param name="connType">数据库连接类型</param>
+            <param name="maxConnection">最大连接数，最大可以创建的连接数目</param>
+            <param name="minConnection">最小连接数</param>
+            <param name="seepConnection">每次创建连接的连接数</param>
+            <param name="keepConnection">保留连接数，当空闲连接不足该数值时，连接池将创建seepConnection个连接</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.#ctor(System.String,NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionType,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="connectionString">数据库连接字符串</param>
+            <param name="connType">数据库连接类型</param>
+            <param name="maxConnection">最大连接数，最大可以创建的连接数目</param>
+            <param name="minConnection">最小连接数</param>
+            <param name="seepConnection">每次创建连接的连接数</param>
+            <param name="keepConnection">保留连接数，当空闲连接不足该数值时，连接池将创建seepConnection个连接</param>
+            <param name="keepRealConnection">当空闲的实际连接不足该值时创建连接，直到达到最大连接数</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.InitConnectionPool(System.String,NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionType,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="connectionString">数据库连接字符串</param>
+            <param name="connType">数据库连接类型</param>
+            <param name="maxConnection">最大连接数，最大可以创建的连接数目</param>
+            <param name="minConnection">最小连接数</param>
+            <param name="seepConnection">每次创建连接的连接数</param>
+            <param name="keepConnection">保留连接数，当空闲连接不足该数值时，连接池将创建seepConnection个连接</param>
+            <param name="keepRealConnection">当空闲的实际连接不足该值时创建连接，直到达到最大连接数</param>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.State">
+            <summary>
+            连接池服务状态
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.Enable">
+            <summary>
+            连接池是否启动，改变该属性将相当于调用StartServices或StopServices方法，
+            注：只有连接池处于Run，Stop状态情况下才可以对此属性赋值
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.ConnectionType">
+            <summary>
+            得到或设置连接类型
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.ConnectionString">
+            <summary>
+            连接池使用的连接字符串
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.RunTime">
+            <summary>
+            得到服务器运行时间
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.MinConnection">
+            <summary>
+            最小连接数
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.MaxConnection">
+            <summary>
+            最大连接数，最大可以创建的连接数目
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.SeepConnection">
+            <summary>
+            每次创建连接的连接数
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.KeepRealConnection">
+            <summary>
+            保留的实际空闲连接，以攻可能出现的ReadOnly使用
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.Interval">
+            <summary>
+            自动清理连接池的时间间隔
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.Exist">
+            <summary>
+            每个连接生存期限(单位分钟)，默认20分钟
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.MaxRepeatDegree">
+            <summary>
+            可以被重复使用次数（引用记数）当连接被重复分配该值所表示的次数时，该连接将不能被分配出去。
+            当连接池的连接被分配尽时，连接池会在已经分配出去的连接中，重复分配连接（引用记数）。来缓解连接池压力
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.MaxConnectionFormPool">
+            <summary>
+            连接池最多可以提供多少个连接
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.PotentRealFormPool">
+            <summary>
+            连接池中存在的实际连接数(有效的实际连接)
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.RealFormPool">
+            <summary>
+            连接池中存在的实际连接数(包含失效的连接)
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.SpareRealFormPool">
+            <summary>
+            空闲的实际连接
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.UseRealFormPool">
+            <summary>
+            已分配的实际连接
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.ReadOnlyFormPool">
+            <summary>
+            连接池已经分配多少只读连接
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.UseFormPool">
+            <summary>
+            已经分配的连接数
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.SpareFormPool">
+            <summary>
+            目前可以提供的连接数
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.StartServices">
+            <summary>
+            启动服务，线程安全，同步调用
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.StartServices(System.Boolean)">
+            <summary>
+            启动服务，线程安全
+            </summary>
+            <param name="ansy">是否异步调用True为是，异步调用指，用户调用该方法后，无须等待创建结束就可继续做其他操作</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.StopServices">
+            <summary>
+            停止服务，线程安全
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.StopServices(System.Boolean)">
+            <summary>
+            停止服务，线程安全
+            <param name="needs">是否必须退出；如果指定为false与StartServices()功能相同，如果指定为true。
+            将未收回的连接资源关闭，这将是危险的。认为可能你的程序正在使用此资源。</param>
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.Dispose">
+            <summary>
+            释放[系统自动调用不必关心]
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.GetConnectionFormPool(System.Object)">
+            <summary>
+            在连接池中申请一个连接，使用None级别，线程安全
+            </summary>
+            <param name="gui">发起者</param>
+            <returns>返回申请到的连接</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.GetConnectionFormPool(System.Object,NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionLevel)">
+            <summary>
+            在连接池中申请一个连接，线程安全
+            </summary>
+            <param name="key">申请者</param>
+            <param name="connLevel">申请的连接级别</param>
+            <returns>返回申请到的连接</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.GetConnectionFormPool_ReadOnly(System.Object)">
+            <summary>
+            申请一个连接资源，只读方式，线程安全
+            </summary>
+            <param name="key">申请者</param>
+            <returns>申请到的连接对象</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.GetConnectionFormPool_High(System.Object)">
+            <summary>
+            申请一个连接资源，优先级-高，线程安全
+            </summary>
+            <param name="key">申请者</param>
+            <returns>申请到的连接对象</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.GetConnectionFormPool_None(System.Object)">
+            <summary>
+            申请一个连接资源，优先级-中，线程安全
+            </summary>
+            <param name="key">申请者</param>
+            <returns>申请到的连接对象</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.GetConnectionFormPool_Bottom(System.Object)">
+            <summary>
+            申请一个连接资源，优先级-低，线程安全
+            </summary>
+            <param name="key">申请者</param>
+            <returns>申请到的连接对象</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.GetConnectionFormPool_Return(System.Object,NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct,NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionLevel)">
+            <summary>
+            返回DbConnection对象，同时做获得连接时的必要操作
+            </summary>
+            <param name="key">key</param>
+            <param name="ConnStruct">ConnectionStruct对象</param>
+            <param name="connLevel">级别</param>
+            <param name="readOnly">是否为只读属性</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.DisposeConnection(System.Object)">
+            <summary>
+            释放申请的数据库连接对象，线程安全
+            <param name="key">key表示数据库连接申请者</param>
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.CreateThreadProcess">
+            <summary>
+            创建线程
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.time_Elapsed(System.Object,System.Timers.ElapsedEventArgs)">
+            <summary>
+            检测事件
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.GetNumOf(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            得到当前要增加的量
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.CreateConnection(System.String,NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionType)">
+            <summary>
+            用指定类型创建连接
+            </summary>
+            <param name="conn">连接字符串</param>
+            <param name="cte">连接类型</param>
+            <param name="dt">连接超时时间</param>
+            <returns>返回创建的连接</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.TestConnStruct(NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct)">
+            <summary>
+            测试ConnectionStruct是否过期
+            </summary>
+            <param name="ConnStruct">被测试的ConnectionStruct</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.UpdateAttribute">
+            <summary>
+            更新属性
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.PoolNotRunException">
+            <summary>
+            服务未启动
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.PoolNotStopException">
+            <summary>
+            服务已经运行或者未完全结束
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ResCallBackException">
+            <summary>
+            连接池资源未全部回收
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.PoolFullException">
+            <summary>
+            连接池已经饱和，不能提供连接
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.StateException">
+            <summary>
+            服务状态错误
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.KeyExecption">
+            <summary>
+            一个key对象只能申请一个连接
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.NotKeyExecption">
+            <summary>
+            无法释放，不存在的key
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.SetValueExecption">
+            <summary>
+            当前连接池状态不可以对属性赋值
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ParameterBoundExecption">
+            <summary>
+            参数范围错误
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnTypeExecption">
+            <summary>
+            无效的ConnTypeEnum类型参数
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.OccasionExecption">
+            <summary>
+            连接资源耗尽，或错误的访问时机。
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ResLostnExecption">
+            <summary>
+            连接资源已经失效。
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.AllotExecption">
+            <summary>
+            连接资源不可以被分配。
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.AllotAndRepeatExecption">
+            <summary>
+            连接资源已经被分配并且不允许重复引用。
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.RepeatIsZeroExecption">
+            <summary>
+            引用记数已经为0。
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.PoolState">
+            <summary>
+            连接池状态
+            </summary>
+        </member>
+        <member name="F:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.PoolState.UnInitialize">
+            <summary>
+            刚刚创建的对象，表示该对象未被调用过StartSeivice方法。
+            </summary>
+        </member>
+        <member name="F:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.PoolState.Initialize">
+            <summary>
+            初始化中，该状态下服务正在按照参数初始化连接池。
+            </summary>
+        </member>
+        <member name="F:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.PoolState.Run">
+            <summary>
+            运行中
+            </summary>
+        </member>
+        <member name="F:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.PoolState.Stop">
+            <summary>
+            停止状态
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionLevel">
+            <summary>
+            要申请连接的级别
+            </summary>
+        </member>
+        <member name="F:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionLevel.ReadOnly">
+            <summary>
+            独占方式，分配全新的连接资源，并且该连接资源在本次使用释放回连接池之前不能在分配出去。如果连接池只能分配引用记数类型连接资源则该级别将产生一个异常，标志连接池资源耗尽
+            </summary>
+        </member>
+        <member name="F:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionLevel.High">
+            <summary>
+            优先级-高，分配全新的连接资源，不使用引用记数技术。注：此级别不保证在分配后该连接资源后，仍然保持独立占有资源，若想独立占有资源请使用ReadOnely
+            </summary>
+        </member>
+        <member name="F:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionLevel.None">
+            <summary>
+            优先级-中，适当应用引用记数技术分配连接
+            </summary>
+        </member>
+        <member name="F:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionLevel.Bottom">
+            <summary>
+            优先级-底，尽可能使用引用记数技术分配连接
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionType">
+            <summary>
+            连接类型
+            </summary>
+        </member>
+        <member name="F:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionType.Odbc">
+            <summary>
+            ODBC 数据源
+            </summary>
+        </member>
+        <member name="F:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionType.OleDb">
+            <summary>
+            OLE DB 数据源
+            </summary>
+        </member>
+        <member name="F:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionType.SqlClient">
+            <summary>
+            SqlServer 数据库连接
+            </summary>
+        </member>
+        <member name="F:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionType.None">
+            <summary>
+            默认（无分配）
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct">
+            <summary>
+            连接池中的一个连接类型
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.#ctor(System.Data.Common.DbConnection,NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionType)">
+            <summary>
+            连接池中的连接
+            </summary>
+            <param name="conn">数据库连接</param>
+            <param name="connType">连接类型</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.#ctor(System.Data.Common.DbConnection,NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionType,System.DateTime)">
+            <summary>
+            连接池中的连接
+            </summary>
+            <param name="conn">数据库连接</param>
+            <param name="connType">连接类型</param>
+            <param name="dt">连接创建时间</param>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.Enable">
+            <summary>
+            是否失效；false表示失效
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.IsCanAllot">
+            <summary>
+            表示该连接是否可以被分配
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.IsUsing">
+            <summary>
+            是否正在被使用中
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.UseDegree">
+            <summary>
+            被使用次数
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.RepeatNow">
+            <summary>
+            当前连接被重复引用多少
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.IsRepeat">
+            <summary>
+            连接是否可以被重复引用
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.ConnType">
+            <summary>
+            连接类型
+            </summary> 
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.Connection">
+            <summary>
+            连接对象
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.Obj">
+            <summary>
+            连接附带的信息
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.State">
+            <summary>
+            数据库连接状态
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.Open">
+            <summary>
+            打开数据库连接
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.Close">
+            <summary>
+            关闭数据库连接 
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.SetConnectionLost">
+            <summary>
+            无条件将连接设置为失效
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.Repeat">
+            <summary>
+            被分配出去，线程安全的
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.Remove">
+            <summary>
+            被释放回来，线程安全的
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.Dispose">
+            <summary>
+            释放资源
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.DBC.GetNewDB">
+            <summary>
+            获取数据库驱动
+            </summary>
+            <returns>IDBDriver 数据库驱动</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.DBC.Select(System.String,System.Collections.Hashtable)">
+            <summary>
+            SQL 查询语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.DBC.SelectList(System.String,System.Collections.Hashtable,System.Int32)">
+            <summary>
+            SQL 查询语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.DBC.SelectsPecialProc(System.String,System.Collections.Hashtable)">
+            <summary>
+            特殊存储过程【参数是表】
+            </summary>
+            <param name="sql">存储过程名</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.DBC.Execute(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+             增删改执行SQL带参数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>INT</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.DBC.ExecuteProc(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+             存过过程新增，删除，更新
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>INT</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.DBC.GetTotalRecordWithParameter(System.String,System.Collections.Hashtable)">
+            <summary>
+            获取集合总个数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>object</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.DBC.ExcuteForNewID(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+             获取自动增长的ID值
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>decimal</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.DBC.SelectDataTable(System.String,System.Collections.Hashtable)">
+            <summary>
+            
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.DBC.DataBulkCopyByDataTable(System.String,System.Data.DataTable)">
+            <summary>
+            批量导入
+            </summary>
+            <param name="dataTableName">表名</param>
+            <param name="sourceDataTable">数据表</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.DBC.SetArgs(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+            SQL语句参数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.DBC.SetArgsProc(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+             存储过程参数私有
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.DBC.SetSpecialArgsProc(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+            存储过程把表作为变量来传递
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.DBC.DataTable2ArrayList(System.Data.DataTable)">
+            <summary>
+            把DataTable转换成ArrayList
+            </summary>
+            <param name="data">DataTable</param>
+            <returns>ArrayList</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.DBC.DataTable2List(System.Data.DataTable)">
+            <summary>
+            把DataTable转换成ArrayList
+            </summary>
+            <param name="data">DataTable</param>
+            <returns>ArrayList</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.DBC_ContainerBuilder.Select(System.String,System.Collections.Hashtable)">
+            <summary>
+            SQL 查询语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.DBC_ContainerBuilder.SelectList(System.String,System.Collections.Hashtable,System.Int32)">
+            <summary>
+            SQL 查询语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.DBC_ContainerBuilder.SelectsPecialProc(System.String,System.Collections.Hashtable)">
+            <summary>
+            特殊存储过程【参数是表】
+            </summary>
+            <param name="sql">存储过程名</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.DBC_ContainerBuilder.Execute(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+             增删改执行SQL带参数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>INT</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.DBC_ContainerBuilder.ExecuteProc(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+             存过过程新增，删除，更新
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>INT</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.DBC_ContainerBuilder.GetTotalRecordWithParameter(System.String,System.Collections.Hashtable)">
+            <summary>
+            获取集合总个数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>object</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.DBC_ContainerBuilder.ExcuteForNewID(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+             获取自动增长的ID值
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>decimal</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.DBC_ContainerBuilder.SelectDataTable(System.String,System.Collections.Hashtable)">
+            <summary>
+            
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.DBC_ContainerBuilder.DataBulkCopyByDataTable(System.String,System.Data.DataTable)">
+            <summary>
+            批量导入
+            </summary>
+            <param name="dataTableName">表名</param>
+            <param name="sourceDataTable">数据表</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.DBC_ContainerBuilder.SetArgs(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+            SQL语句参数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.DBC_ContainerBuilder.SetArgsProc(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+             存储过程参数私有
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.DBC_ContainerBuilder.SetSpecialArgsProc(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+            存储过程把表作为变量来传递
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.DBC_ContainerBuilder.DataTable2ArrayList(System.Data.DataTable)">
+            <summary>
+            把DataTable转换成ArrayList
+            </summary>
+            <param name="data">DataTable</param>
+            <returns>ArrayList</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.DBC_ContainerBuilder.DataTable2List(System.Data.DataTable)">
+            <summary>
+            把DataTable转换成ArrayList
+            </summary>
+            <param name="data">DataTable</param>
+            <returns>ArrayList</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.FileTransfer.connectState(System.String,System.String,System.String)">
+            <summary>
+            连接远程共享文件夹
+            </summary>
+            <param name="path">远程共享文件夹的路径</param>
+            <param name="userName">用户名</param>
+            <param name="passWord">密码</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.FileTransfer.TransportRemoteToServer(System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="src">远程服务器路径（共享文件夹路径）</param>
+            <param name="dst">本地文件夹路径</param>
+            <param name="fileName"></param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.FileTransfer.TransportRemoteToLocal(System.String,System.String,System.String)">
+            <summary>
+            从远程服务器下载文件到本地
+            </summary>
+            <param name="src">下载到本地后的文件路径，包含文件的扩展名</param>
+            <param name="dst">远程服务器路径（共享文件夹路径）</param>
+            <param name="fileName">远程服务器（共享文件夹）中的文件名称，包含扩展名</param>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.GetDBTYype.instance">
+            
+             定义公共静态属性instance，外部调用
+            
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.IDBDriver.Select(System.String,System.Collections.Hashtable)">
+            <summary>
+            SQL 查询语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.IDBDriver.SelectList(System.String,System.Collections.Hashtable,System.Int32)">
+            <summary>
+            SQL 查询语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.IDBDriver.SelectsPecialProc(System.String,System.Collections.Hashtable)">
+            <summary>
+            特殊存储过程【参数是表】
+            </summary>
+            <param name="sql">存储过程名</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.IDBDriver.SelectDataTablePecialProc(System.String,System.Collections.Hashtable)">
+            <summary>
+            特殊存储过程【参数是表】
+            </summary>
+            <param name="sql">存储过程名</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.IDBDriver.Execute(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+             增删改执行SQL带参数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>INT</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.IDBDriver.ExecuteProc(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+             存过过程新增，删除，更新
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>INT</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.IDBDriver.GetTotalRecordWithParameter(System.String,System.Collections.Hashtable)">
+            <summary>
+            获取集合总个数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>object</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.IDBDriver.ExcuteForNewID(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+             获取自动增长的ID值
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>decimal</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.IDBDriver.SelectDataTable(System.String,System.Collections.Hashtable)">
+            <summary>
+            
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.IDBDriver.DataBulkCopyByDataTable(System.String,System.Data.DataTable)">
+            <summary>
+            批量导入
+            </summary>
+            <param name="dataTableName">表名</param>
+            <param name="sourceDataTable">数据表</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.IDBDriver.SetArgs(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+            SQL语句参数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.IDBDriver.SetArgsProc(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+             存储过程参数私有
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.IDBDriver.SetSpecialArgsProc(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+            存储过程把表作为变量来传递
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.IDBDriver.DataTable2ArrayList(System.Data.DataTable)">
+            <summary>
+            把DataTable转换成ArrayList
+            </summary>
+            <param name="data">DataTable</param>
+            <returns>ArrayList</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.IDBDriver.DataTable2List(System.Data.DataTable,System.Int32)">
+            <summary>
+            把DataTable转换成ArrayList
+            </summary>
+            <param name="data">DataTable</param>
+            <returns>ArrayList</returns>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.MySqlDriver.GetMySqlConnection.instance">
+            
+             定义公共静态属性instance，外部调用
+            
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.MySqlDriver.MySqlDB.DataBulkCopyByDataTable(System.String,System.Data.DataTable)">
+            <summary>
+            /  批量导入
+            </summary>
+            <param name="dataTableName">表名</param>
+            <param name="sourceDataTable">数据表</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.MySqlDriver.MySqlDB.ExcuteForNewID(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+            获取自动增长的ID值
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>decimal</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.MySqlDriver.MySqlDB.Execute(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+             增删改执行SQL带参数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>INT</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.MySqlDriver.MySqlDB.ExecuteProc(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+             存过过程新增，删除，更新
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>INT</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.MySqlDriver.MySqlDB.GetTotalRecordWithParameter(System.String,System.Collections.Hashtable)">
+            <summary>
+            获取集合总个数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>object</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.MySqlDriver.MySqlDB.Select(System.String,System.Collections.Hashtable)">
+            <summary>
+            SQL 查询语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.MySqlDriver.MySqlDB.SelectList(System.String,System.Collections.Hashtable,System.Int32)">
+            <summary>
+            SQL 查询语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.MySqlDriver.MySqlDB.SelectDataTable(System.String,System.Collections.Hashtable)">
+            <summary>
+            
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.MySqlDriver.MySqlDB.SelectsPecialProc(System.String,System.Collections.Hashtable)">
+            <summary>
+            特殊存储过程【参数是表】
+            </summary>
+            <param name="sql">存储过程名</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.MySqlDriver.MySqlDB.SetArgs(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+             SQL语句参数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.MySqlDriver.MySqlDB.SetArgsProc(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+             存储过程参数私有
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.MySqlDriver.MySqlDB.DataTable2ArrayList(System.Data.DataTable)">
+            <summary>
+            把DataTable转换成ArrayList
+            </summary>
+            <param name="data">DataTable</param>
+            <returns>ArrayList</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.MySqlDriver.MySqlDB.SetSpecialArgsProc(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+            存储过程把表作为变量来传递
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.MySqlDriver.MySqlDB.DataTable2List(System.Data.DataTable,System.Int32)">
+            <summary>
+            把DataTable转换成ArrayList
+            </summary>
+            <param name="data">DataTable</param>
+            <returns>ArrayList</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.MySqlDriver.MySqlDB.ConvertToModel``1(System.Data.DataTable)" -->
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.MySqlDriver.MySqlDB.SelectListForIn(System.String,System.Collections.Hashtable,System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="sql"></param>
+            <param name="args"></param>
+            <param name="InIds"></param>
+            <param name="IsNormalSmallOrBig"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.OracleDriver.GetOracleConnection.instance">
+            
+             定义公共静态属性instance，外部调用
+            
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.OracleDriver.OracleDB.DataBulkCopyByDataTable(System.String,System.Data.DataTable)">
+            <summary>
+            /  批量导入
+            </summary>
+            <param name="dataTableName">表名</param>
+            <param name="sourceDataTable">数据表</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.OracleDriver.OracleDB.ExcuteForNewID(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+            获取自动增长的ID值
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>decimal</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.OracleDriver.OracleDB.Execute(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+             增删改执行SQL带参数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>INT</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.OracleDriver.OracleDB.ExecuteProc(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+             存过过程新增，删除，更新
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>INT</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.OracleDriver.OracleDB.GetTotalRecordWithParameter(System.String,System.Collections.Hashtable)">
+            <summary>
+            获取集合总个数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>object</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.OracleDriver.OracleDB.Select(System.String,System.Collections.Hashtable)">
+            <summary>
+            SQL 查询语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.OracleDriver.OracleDB.SelectList(System.String,System.Collections.Hashtable,System.Int32)">
+            <summary>
+            SQL 查询语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.OracleDriver.OracleDB.SelectDataTable(System.String,System.Collections.Hashtable)">
+            <summary>
+            
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.OracleDriver.OracleDB.SelectsPecialProc(System.String,System.Collections.Hashtable)">
+            <summary>
+            特殊存储过程【参数是表】
+            </summary>
+            <param name="sql">存储过程名</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.OracleDriver.OracleDB.SetArgs(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+             SQL语句参数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.OracleDriver.OracleDB.SetArgsProc(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+             存储过程参数私有
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.OracleDriver.OracleDB.DataTable2ArrayList(System.Data.DataTable)">
+            <summary>
+            把DataTable转换成ArrayList
+            </summary>
+            <param name="data">DataTable</param>
+            <returns>ArrayList</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.OracleDriver.OracleDB.SetSpecialArgsProc(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+            存储过程把表作为变量来传递
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.OracleDriver.OracleDB.DataTable2List(System.Data.DataTable,System.Int32)">
+            <summary>
+            把DataTable转换成ArrayList
+            </summary>
+            <param name="data">DataTable</param>
+            <returns>ArrayList</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.OracleDriver.OracleDB.ConvertToModel``1(System.Data.DataTable)" -->
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.PostgreSqlDriver.GetPostgreSqlConnection.instance">
+            
+             定义公共静态属性instance，外部调用
+            
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.PostgreSqlDriver.PostgreSqlDB.DataBulkCopyByDataTable(System.String,System.Data.DataTable)">
+            <summary>
+            /  批量导入
+            </summary>
+            <param name="dataTableName">表名</param>
+            <param name="sourceDataTable">数据表</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.PostgreSqlDriver.PostgreSqlDB.ExcuteForNewID(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+            获取自动增长的ID值
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>decimal</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.PostgreSqlDriver.PostgreSqlDB.Execute(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+             增删改执行SQL带参数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>INT</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.PostgreSqlDriver.PostgreSqlDB.ExecuteProc(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+             存过过程新增，删除，更新
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>INT</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.PostgreSqlDriver.PostgreSqlDB.GetTotalRecordWithParameter(System.String,System.Collections.Hashtable)">
+            <summary>
+            获取集合总个数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>object</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.PostgreSqlDriver.PostgreSqlDB.Select(System.String,System.Collections.Hashtable)">
+            <summary>
+            SQL 查询语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.PostgreSqlDriver.PostgreSqlDB.SelectList(System.String,System.Collections.Hashtable,System.Int32)">
+            <summary>
+             SQL 查询语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>动态List</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.PostgreSqlDriver.PostgreSqlDB.SelectDataTable(System.String,System.Collections.Hashtable)">
+            <summary>
+            
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.PostgreSqlDriver.PostgreSqlDB.SelectsPecialProc(System.String,System.Collections.Hashtable)">
+            <summary>
+            特殊存储过程【参数是表】
+            </summary>
+            <param name="sql">存储过程名</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.PostgreSqlDriver.PostgreSqlDB.SetArgs(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+             SQL语句参数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.PostgreSqlDriver.PostgreSqlDB.SetArgsProc(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+             存储过程参数私有
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.PostgreSqlDriver.PostgreSqlDB.DataTable2ArrayList(System.Data.DataTable)">
+            <summary>
+            把DataTable转换成ArrayList
+            </summary>
+            <param name="data">DataTable</param>
+            <returns>ArrayList</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.PostgreSqlDriver.PostgreSqlDB.SetSpecialArgsProc(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+            存储过程把表作为变量来传递
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.PostgreSqlDriver.PostgreSqlDB.DataTable2List(System.Data.DataTable,System.Int32)">
+            <summary>
+            把DataTable转换成ArrayList
+            </summary>
+            <param name="data">DataTable</param>
+            <returns>ArrayList</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.PostgreSqlDriver.PostgreSqlDB.ConvertToModel``1(System.Data.DataTable)" -->
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SFtp.Connected">
+            <summary>
+            连接状态
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SFtp.#ctor(System.String,System.Int32,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="host">sftp的IP</param>
+            <param name="port">sftp的端口</param>
+            <param name="username">sftp的帐户</param>
+            <param name="password">sftp的密码</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SFtp.Connect">
+            <summary>
+            连接sftp服务器
+            </summary>
+            <returns>连接状态</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SFtp.Disconnect">
+            <summary>
+            断开连接
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SFtp.Put(System.String,System.String)">
+            <summary>
+            上传文件
+            </summary>
+            <param name="localPath">本地文件路径</param>
+            <param name="remotePath">服务器端文件路径</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SFtp.Put(System.Byte[],System.String)">
+            <summary>
+            上传文字字节数据
+            </summary>
+            <param name="fileByteArr">文件内容字节</param>
+            <param name="remotePath">上传到服务器的路径</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SFtp.Get(System.String,System.String)">
+            <summary>
+            将sftp服务器的文件下载本地
+            </summary>
+            <param name="remotePath">服务器上的路径</param>
+            <param name="localPath">本地的路径</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SFtp.Delete(System.String)">
+            <summary>
+             删除ftp服务器上的文件
+            </summary>
+            <param name="remoteFile">服务器上的路径</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SFtp.GetFileList(System.String,System.String)">
+            <summary>
+            获取ftp服务器上指定路径上的指定前缀的文件名列表
+            </summary>
+            <param name="remotePath">服务器上的路径</param>
+            <param name="fileSuffix">文件名前缀</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SFtp.Move(System.String,System.String)">
+            <summary>
+            ftp服务器端文件移动
+            </summary>
+            <param name="oldRemotePath">原来服务器上路径</param>
+            <param name="newRemotePath">移动后服务器上新路径</param>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SQLiteDriver.GetSQLiteConnection.instance">
+            
+             定义公共静态属性instance，外部调用
+            
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SQLiteDriver.SQLiteDB.DataBulkCopyByDataTable(System.String,System.Data.DataTable)">
+            <summary>
+            /  批量导入
+            </summary>
+            <param name="dataTableName">表名</param>
+            <param name="sourceDataTable">数据表</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SQLiteDriver.SQLiteDB.ExcuteForNewID(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+            获取自动增长的ID值
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>decimal</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SQLiteDriver.SQLiteDB.ExecuteProc(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+             存过过程新增，删除，更新
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>INT</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SQLiteDriver.SQLiteDB.GetTotalRecordWithParameter(System.String,System.Collections.Hashtable)">
+            <summary>
+            获取集合总个数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>object</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SQLiteDriver.SQLiteDB.Select(System.String,System.Collections.Hashtable)">
+            <summary>
+            SQL 查询语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SQLiteDriver.SQLiteDB.SelectList(System.String,System.Collections.Hashtable,System.Int32)">
+            <summary>
+             SQL 查询语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>动态List</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SQLiteDriver.SQLiteDB.SelectListModel``1(System.String,System.Collections.Hashtable)" -->
+        <!-- Badly formed XML comment ignored for member "M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SQLiteDriver.SQLiteDB.ConvertToModel``1(System.Data.DataTable)" -->
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SQLiteDriver.SQLiteDB.SelectDataTable(System.String,System.Collections.Hashtable)">
+            <summary>
+            
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SQLiteDriver.SQLiteDB.SelectsPecialProc(System.String,System.Collections.Hashtable)">
+            <summary>
+            特殊存储过程【参数是表】
+            </summary>
+            <param name="sql">存储过程名</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SQLiteDriver.SQLiteDB.SetArgs(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+             SQL语句参数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SQLiteDriver.SQLiteDB.SetArgsProc(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+             存储过程参数私有
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SQLiteDriver.SQLiteDB.DataTable2ArrayList(System.Data.DataTable)">
+            <summary>
+            把DataTable转换成ArrayList
+            </summary>
+            <param name="data">DataTable</param>
+            <returns>ArrayList</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SQLiteDriver.SQLiteDB.DataTable2List(System.Data.DataTable,System.Int32)">
+            <summary>
+            把DataTable转换成ArrayList
+            </summary>
+            <param name="data">DataTable</param>
+            <returns>ArrayList</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SQLiteDriver.SQLiteDB.SetSpecialArgsProc(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+            存储过程把表作为变量来传递
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SqlServerDriver.GetSqlServerConnection.instance">
+            
+             定义公共静态属性instance，外部调用
+            
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SqlServerDriver.SqlServerDB.DataBulkCopyByDataTable(System.String,System.Data.DataTable)">
+            <summary>
+            /  批量导入
+            </summary>
+            <param name="dataTableName">表名</param>
+            <param name="sourceDataTable">数据表</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SqlServerDriver.SqlServerDB.ExcuteForNewID(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+            获取自动增长的ID值
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>decimal</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SqlServerDriver.SqlServerDB.Execute(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+             增删改执行SQL带参数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>INT</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SqlServerDriver.SqlServerDB.ExecuteProc(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+             存过过程新增，删除，更新
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>INT</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SqlServerDriver.SqlServerDB.GetTotalRecordWithParameter(System.String,System.Collections.Hashtable)">
+            <summary>
+            获取集合总个数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>object</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SqlServerDriver.SqlServerDB.Select(System.String,System.Collections.Hashtable)">
+            <summary>
+            SQL 查询语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SqlServerDriver.SqlServerDB.SelectList(System.String,System.Collections.Hashtable,System.Int32)">
+            <summary>
+             SQL 查询语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>动态List</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SqlServerDriver.SqlServerDB.SelectDataTable(System.String,System.Collections.Hashtable)">
+            <summary>
+            
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SqlServerDriver.SqlServerDB.SelectsPecialProc(System.String,System.Collections.Hashtable)">
+            <summary>
+            特殊存储过程【参数是表】
+            </summary>
+            <param name="sql">存储过程名</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SqlServerDriver.SqlServerDB.SetArgs(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+             SQL语句参数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SqlServerDriver.SqlServerDB.SetArgsProc(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+             存储过程参数私有
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SqlServerDriver.SqlServerDB.DataTable2ArrayList(System.Data.DataTable)">
+            <summary>
+            把DataTable转换成ArrayList
+            </summary>
+            <param name="data">DataTable</param>
+            <returns>ArrayList</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SqlServerDriver.SqlServerDB.DataTable2List(System.Data.DataTable,System.Int32)">
+            <summary>
+            把DataTable转换成ArrayList
+            </summary>
+            <param name="data">DataTable</param>
+            <returns>ArrayList</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SqlServerDriver.SqlServerDB.SetSpecialArgsProc(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+            存储过程把表作为变量来传递
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SqlServerDriver.SqlServerDB.ConvertToModel``1(System.Data.DataTable)" -->
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.LocalDriver.SqlServerDriver.SqlServerDB.SelectListForIn(System.String,System.Collections.Hashtable,System.String,System.Int32)">
+            <summary>
+             此方法只限于主键的查询
+            </summary>
+            <param name="sql">只能写SELECT * FROM 表名 或者 SELECT * FROM 表名 WHERE ...</param>
+            <param name="args">参数 比如 SELECT * FROM A WHERE ID=@ID AND NAME=@NAME  @ID和@NAME是参数 </param>
+            <param name="InIds">要传的字符串 格式'A0001,A0002,A0003,A004'</param>
+            <param name="IsNormalSmallOrBig">输出字段的格式 0:和数据库字段保持一致  1:全部小写   2:全部大写   默认是0</param>
+            <returns></returns>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool">
+            <summary>
+            数据库连接池，默认数据库连接方案是ODBC
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="connectionString">数据库连接字符串</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.#ctor(System.String,NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionType)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="connectionString">数据库连接字符串</param>
+            <param name="connType">数据库连接类型</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.#ctor(System.String,NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionType,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="connectionString">数据库连接字符串</param>
+            <param name="connType">数据库连接类型</param>
+            <param name="maxConnection">最大连接数，最大可以创建的连接数目</param>
+            <param name="minConnection">最小连接数</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.#ctor(System.String,NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionType,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="connectionString">数据库连接字符串</param>
+            <param name="connType">数据库连接类型</param>
+            <param name="maxConnection">最大连接数，最大可以创建的连接数目</param>
+            <param name="minConnection">最小连接数</param>
+            <param name="seepConnection">每次创建连接的连接数</param>
+            <param name="keepConnection">保留连接数，当空闲连接不足该数值时，连接池将创建seepConnection个连接</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.#ctor(System.String,NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionType,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="connectionString">数据库连接字符串</param>
+            <param name="connType">数据库连接类型</param>
+            <param name="maxConnection">最大连接数，最大可以创建的连接数目</param>
+            <param name="minConnection">最小连接数</param>
+            <param name="seepConnection">每次创建连接的连接数</param>
+            <param name="keepConnection">保留连接数，当空闲连接不足该数值时，连接池将创建seepConnection个连接</param>
+            <param name="keepRealConnection">当空闲的实际连接不足该值时创建连接，直到达到最大连接数</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.InitConnectionPool(System.String,NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionType,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="connectionString">数据库连接字符串</param>
+            <param name="connType">数据库连接类型</param>
+            <param name="maxConnection">最大连接数，最大可以创建的连接数目</param>
+            <param name="minConnection">最小连接数</param>
+            <param name="seepConnection">每次创建连接的连接数</param>
+            <param name="keepConnection">保留连接数，当空闲连接不足该数值时，连接池将创建seepConnection个连接</param>
+            <param name="keepRealConnection">当空闲的实际连接不足该值时创建连接，直到达到最大连接数</param>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.State">
+            <summary>
+            连接池服务状态
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.Enable">
+            <summary>
+            连接池是否启动，改变该属性将相当于调用StartServices或StopServices方法，
+            注：只有连接池处于Run，Stop状态情况下才可以对此属性赋值
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.ConnectionType">
+            <summary>
+            得到或设置连接类型
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.ConnectionString">
+            <summary>
+            连接池使用的连接字符串
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.RunTime">
+            <summary>
+            得到服务器运行时间
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.MinConnection">
+            <summary>
+            最小连接数
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.MaxConnection">
+            <summary>
+            最大连接数，最大可以创建的连接数目
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.SeepConnection">
+            <summary>
+            每次创建连接的连接数
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.KeepRealConnection">
+            <summary>
+            保留的实际空闲连接，以攻可能出现的ReadOnly使用
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.Interval">
+            <summary>
+            自动清理连接池的时间间隔
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.Exist">
+            <summary>
+            每个连接生存期限(单位分钟)，默认20分钟
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.MaxRepeatDegree">
+            <summary>
+            可以被重复使用次数（引用记数）当连接被重复分配该值所表示的次数时，该连接将不能被分配出去。
+            当连接池的连接被分配尽时，连接池会在已经分配出去的连接中，重复分配连接（引用记数）。来缓解连接池压力
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.MaxConnectionFormPool">
+            <summary>
+            连接池最多可以提供多少个连接
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.PotentRealFormPool">
+            <summary>
+            连接池中存在的实际连接数(有效的实际连接)
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.RealFormPool">
+            <summary>
+            连接池中存在的实际连接数(包含失效的连接)
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.SpareRealFormPool">
+            <summary>
+            空闲的实际连接
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.UseRealFormPool">
+            <summary>
+            已分配的实际连接
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.ReadOnlyFormPool">
+            <summary>
+            连接池已经分配多少只读连接
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.UseFormPool">
+            <summary>
+            已经分配的连接数
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.SpareFormPool">
+            <summary>
+            目前可以提供的连接数
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.StartServices">
+            <summary>
+            启动服务，线程安全，同步调用
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.StartServices(System.Boolean)">
+            <summary>
+            启动服务，线程安全
+            </summary>
+            <param name="ansy">是否异步调用True为是，异步调用指，用户调用该方法后，无须等待创建结束就可继续做其他操作</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.StopServices">
+            <summary>
+            停止服务，线程安全
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.StopServices(System.Boolean)">
+            <summary>
+            停止服务，线程安全
+            <param name="needs">是否必须退出；如果指定为false与StartServices()功能相同，如果指定为true。
+            将未收回的连接资源关闭，这将是危险的。认为可能你的程序正在使用此资源。</param>
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.Dispose">
+            <summary>
+            释放[系统自动调用不必关心]
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.GetConnectionFormPool(System.Object)">
+            <summary>
+            在连接池中申请一个连接，使用None级别，线程安全
+            </summary>
+            <param name="gui">发起者</param>
+            <returns>返回申请到的连接</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.GetConnectionFormPool(System.Object,NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionLevel)">
+            <summary>
+            在连接池中申请一个连接，线程安全
+            </summary>
+            <param name="key">申请者</param>
+            <param name="connLevel">申请的连接级别</param>
+            <returns>返回申请到的连接</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.GetConnectionFormPool_ReadOnly(System.Object)">
+            <summary>
+            申请一个连接资源，只读方式，线程安全
+            </summary>
+            <param name="key">申请者</param>
+            <returns>申请到的连接对象</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.GetConnectionFormPool_High(System.Object)">
+            <summary>
+            申请一个连接资源，优先级-高，线程安全
+            </summary>
+            <param name="key">申请者</param>
+            <returns>申请到的连接对象</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.GetConnectionFormPool_None(System.Object)">
+            <summary>
+            申请一个连接资源，优先级-中，线程安全
+            </summary>
+            <param name="key">申请者</param>
+            <returns>申请到的连接对象</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.GetConnectionFormPool_Bottom(System.Object)">
+            <summary>
+            申请一个连接资源，优先级-低，线程安全
+            </summary>
+            <param name="key">申请者</param>
+            <returns>申请到的连接对象</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.GetConnectionFormPool_Return(System.Object,NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct,NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionLevel)">
+            <summary>
+            返回DbConnection对象，同时做获得连接时的必要操作
+            </summary>
+            <param name="key">key</param>
+            <param name="ConnStruct">ConnectionStruct对象</param>
+            <param name="connLevel">级别</param>
+            <param name="readOnly">是否为只读属性</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.DisposeConnection(System.Object)">
+            <summary>
+            释放申请的数据库连接对象，线程安全
+            <param name="key">key表示数据库连接申请者</param>
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.CreateThreadProcess">
+            <summary>
+            创建线程
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.time_Elapsed(System.Object,System.Timers.ElapsedEventArgs)">
+            <summary>
+            检测事件
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.GetNumOf(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            得到当前要增加的量
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.CreateConnection(System.String,NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionType)">
+            <summary>
+            用指定类型创建连接
+            </summary>
+            <param name="conn">连接字符串</param>
+            <param name="cte">连接类型</param>
+            <param name="dt">连接超时时间</param>
+            <returns>返回创建的连接</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.TestConnStruct(NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct)">
+            <summary>
+            测试ConnectionStruct是否过期
+            </summary>
+            <param name="ConnStruct">被测试的ConnectionStruct</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionPool.UpdateAttribute">
+            <summary>
+            更新属性
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.PoolNotRunException">
+            <summary>
+            服务未启动
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.PoolNotStopException">
+            <summary>
+            服务已经运行或者未完全结束
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ResCallBackException">
+            <summary>
+            连接池资源未全部回收
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.PoolFullException">
+            <summary>
+            连接池已经饱和，不能提供连接
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.StateException">
+            <summary>
+            服务状态错误
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.KeyExecption">
+            <summary>
+            一个key对象只能申请一个连接
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.NotKeyExecption">
+            <summary>
+            无法释放，不存在的key
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.SetValueExecption">
+            <summary>
+            当前连接池状态不可以对属性赋值
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ParameterBoundExecption">
+            <summary>
+            参数范围错误
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnTypeExecption">
+            <summary>
+            无效的ConnTypeEnum类型参数
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.OccasionExecption">
+            <summary>
+            连接资源耗尽，或错误的访问时机。
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ResLostnExecption">
+            <summary>
+            连接资源已经失效。
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.AllotExecption">
+            <summary>
+            连接资源不可以被分配。
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.AllotAndRepeatExecption">
+            <summary>
+            连接资源已经被分配并且不允许重复引用。
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.RepeatIsZeroExecption">
+            <summary>
+            引用记数已经为0。
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.PoolState">
+            <summary>
+            连接池状态
+            </summary>
+        </member>
+        <member name="F:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.PoolState.UnInitialize">
+            <summary>
+            刚刚创建的对象，表示该对象未被调用过StartSeivice方法。
+            </summary>
+        </member>
+        <member name="F:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.PoolState.Initialize">
+            <summary>
+            初始化中，该状态下服务正在按照参数初始化连接池。
+            </summary>
+        </member>
+        <member name="F:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.PoolState.Run">
+            <summary>
+            运行中
+            </summary>
+        </member>
+        <member name="F:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.PoolState.Stop">
+            <summary>
+            停止状态
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionLevel">
+            <summary>
+            要申请连接的级别
+            </summary>
+        </member>
+        <member name="F:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionLevel.ReadOnly">
+            <summary>
+            独占方式，分配全新的连接资源，并且该连接资源在本次使用释放回连接池之前不能在分配出去。如果连接池只能分配引用记数类型连接资源则该级别将产生一个异常，标志连接池资源耗尽
+            </summary>
+        </member>
+        <member name="F:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionLevel.High">
+            <summary>
+            优先级-高，分配全新的连接资源，不使用引用记数技术。注：此级别不保证在分配后该连接资源后，仍然保持独立占有资源，若想独立占有资源请使用ReadOnely
+            </summary>
+        </member>
+        <member name="F:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionLevel.None">
+            <summary>
+            优先级-中，适当应用引用记数技术分配连接
+            </summary>
+        </member>
+        <member name="F:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionLevel.Bottom">
+            <summary>
+            优先级-底，尽可能使用引用记数技术分配连接
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionType">
+            <summary>
+            连接类型
+            </summary>
+        </member>
+        <member name="F:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionType.Odbc">
+            <summary>
+            ODBC 数据源
+            </summary>
+        </member>
+        <member name="F:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionType.OleDb">
+            <summary>
+            OLE DB 数据源
+            </summary>
+        </member>
+        <member name="F:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionType.SqlClient">
+            <summary>
+            SqlServer 数据库连接
+            </summary>
+        </member>
+        <member name="F:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionType.None">
+            <summary>
+            默认（无分配）
+            </summary>
+        </member>
+        <member name="T:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct">
+            <summary>
+            连接池中的一个连接类型
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.#ctor(System.Data.Common.DbConnection,NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionType)">
+            <summary>
+            连接池中的连接
+            </summary>
+            <param name="conn">数据库连接</param>
+            <param name="connType">连接类型</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.#ctor(System.Data.Common.DbConnection,NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionType,System.DateTime)">
+            <summary>
+            连接池中的连接
+            </summary>
+            <param name="conn">数据库连接</param>
+            <param name="connType">连接类型</param>
+            <param name="dt">连接创建时间</param>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.Enable">
+            <summary>
+            是否失效；false表示失效
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.IsCanAllot">
+            <summary>
+            表示该连接是否可以被分配
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.IsUsing">
+            <summary>
+            是否正在被使用中
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.UseDegree">
+            <summary>
+            被使用次数
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.RepeatNow">
+            <summary>
+            当前连接被重复引用多少
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.IsRepeat">
+            <summary>
+            连接是否可以被重复引用
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.ConnType">
+            <summary>
+            连接类型
+            </summary> 
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.Connection">
+            <summary>
+            连接对象
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.Obj">
+            <summary>
+            连接附带的信息
+            </summary>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.State">
+            <summary>
+            数据库连接状态
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.Open">
+            <summary>
+            打开数据库连接
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.Close">
+            <summary>
+            关闭数据库连接 
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.SetConnectionLost">
+            <summary>
+            无条件将连接设置为失效
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.Repeat">
+            <summary>
+            被分配出去，线程安全的
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.Remove">
+            <summary>
+            被释放回来，线程安全的
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.ConnectPool.ConnectionPoolManager.ConnectionStruct.Dispose">
+            <summary>
+            释放资源
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.DBC_Customer.GetNewDB">
+            <summary>
+            获取数据库驱动
+            </summary>
+            <returns>IDBDriver 数据库驱动</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.DBC_Customer.Select(System.String,System.Collections.Hashtable)">
+            <summary>
+            SQL 查询语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.DBC_Customer.SelectList(System.String,System.Collections.Hashtable,System.Int32)">
+            <summary>
+            SQL 查询语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.DBC_Customer.SelectsPecialProc(System.String,System.Collections.Hashtable)">
+            <summary>
+            特殊存储过程【参数是表】
+            </summary>
+            <param name="sql">存储过程名</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.DBC_Customer.Execute(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+             增删改执行SQL带参数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>INT</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.DBC_Customer.ExecuteProc(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+             存过过程新增，删除，更新
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>INT</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.DBC_Customer.GetTotalRecordWithParameter(System.String,System.Collections.Hashtable)">
+            <summary>
+            获取集合总个数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>object</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.DBC_Customer.ExcuteForNewID(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+             获取自动增长的ID值
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>decimal</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.DBC_Customer.SelectDataTable(System.String,System.Collections.Hashtable)">
+            <summary>
+            
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.DBC_Customer.DataBulkCopyByDataTable(System.String,System.Data.DataTable)">
+            <summary>
+            批量导入
+            </summary>
+            <param name="dataTableName">表名</param>
+            <param name="sourceDataTable">数据表</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.DBC_Customer.SetArgs(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+            SQL语句参数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.DBC_Customer.SetArgsProc(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+             存储过程参数私有
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.DBC_Customer.SetSpecialArgsProc(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+            存储过程把表作为变量来传递
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.DBC_Customer.DataTable2ArrayList(System.Data.DataTable)">
+            <summary>
+            把DataTable转换成ArrayList
+            </summary>
+            <param name="data">DataTable</param>
+            <returns>ArrayList</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.DBC_Customer.DataTable2List(System.Data.DataTable)">
+            <summary>
+            把DataTable转换成ArrayList
+            </summary>
+            <param name="data">DataTable</param>
+            <returns>ArrayList</returns>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.GetDBTYype.instance">
+            
+             定义公共静态属性instance，外部调用
+            
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.IDBDriver.Select(System.String,System.Collections.Hashtable)">
+            <summary>
+            SQL 查询语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.IDBDriver.SelectList(System.String,System.Collections.Hashtable,System.Int32)">
+            <summary>
+            SQL 查询语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.IDBDriver.SelectsPecialProc(System.String,System.Collections.Hashtable)">
+            <summary>
+            特殊存储过程【参数是表】
+            </summary>
+            <param name="sql">存储过程名</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.IDBDriver.SelectDataTablePecialProc(System.String,System.Collections.Hashtable)">
+            <summary>
+            特殊存储过程【参数是表】
+            </summary>
+            <param name="sql">存储过程名</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.IDBDriver.Execute(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+             增删改执行SQL带参数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>INT</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.IDBDriver.ExecuteProc(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+             存过过程新增，删除，更新
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>INT</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.IDBDriver.GetTotalRecordWithParameter(System.String,System.Collections.Hashtable)">
+            <summary>
+            获取集合总个数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>object</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.IDBDriver.ExcuteForNewID(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+             获取自动增长的ID值
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>decimal</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.IDBDriver.SelectDataTable(System.String,System.Collections.Hashtable)">
+            <summary>
+            
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.IDBDriver.DataBulkCopyByDataTable(System.String,System.Data.DataTable)">
+            <summary>
+            批量导入
+            </summary>
+            <param name="dataTableName">表名</param>
+            <param name="sourceDataTable">数据表</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.IDBDriver.SetArgs(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+            SQL语句参数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.IDBDriver.SetArgsProc(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+             存储过程参数私有
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.IDBDriver.SetSpecialArgsProc(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+            存储过程把表作为变量来传递
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.IDBDriver.DataTable2ArrayList(System.Data.DataTable)">
+            <summary>
+            把DataTable转换成ArrayList
+            </summary>
+            <param name="data">DataTable</param>
+            <returns>ArrayList</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.IDBDriver.DataTable2List(System.Data.DataTable,System.Int32)">
+            <summary>
+            把DataTable转换成ArrayList
+            </summary>
+            <param name="data">DataTable</param>
+            <returns>ArrayList</returns>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.MySqlDriver.GetMySqlConnection.instance">
+            
+             定义公共静态属性instance，外部调用
+            
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.MySqlDriver.MySqlDB.DataBulkCopyByDataTable(System.String,System.Data.DataTable)">
+            <summary>
+            /  批量导入
+            </summary>
+            <param name="dataTableName">表名</param>
+            <param name="sourceDataTable">数据表</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.MySqlDriver.MySqlDB.ExcuteForNewID(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+            获取自动增长的ID值
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>decimal</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.MySqlDriver.MySqlDB.Execute(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+             增删改执行SQL带参数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>INT</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.MySqlDriver.MySqlDB.ExecuteProc(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+             存过过程新增，删除，更新
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>INT</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.MySqlDriver.MySqlDB.GetTotalRecordWithParameter(System.String,System.Collections.Hashtable)">
+            <summary>
+            获取集合总个数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>object</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.MySqlDriver.MySqlDB.Select(System.String,System.Collections.Hashtable)">
+            <summary>
+            SQL 查询语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.MySqlDriver.MySqlDB.SelectList(System.String,System.Collections.Hashtable,System.Int32)">
+            <summary>
+            SQL 查询语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.MySqlDriver.MySqlDB.SelectDataTable(System.String,System.Collections.Hashtable)">
+            <summary>
+            
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.MySqlDriver.MySqlDB.SelectsPecialProc(System.String,System.Collections.Hashtable)">
+            <summary>
+            特殊存储过程【参数是表】
+            </summary>
+            <param name="sql">存储过程名</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.MySqlDriver.MySqlDB.SetArgs(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+             SQL语句参数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.MySqlDriver.MySqlDB.SetArgsProc(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+             存储过程参数私有
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.MySqlDriver.MySqlDB.DataTable2ArrayList(System.Data.DataTable)">
+            <summary>
+            把DataTable转换成ArrayList
+            </summary>
+            <param name="data">DataTable</param>
+            <returns>ArrayList</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.MySqlDriver.MySqlDB.SetSpecialArgsProc(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+            存储过程把表作为变量来传递
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.MySqlDriver.MySqlDB.DataTable2List(System.Data.DataTable,System.Int32)">
+            <summary>
+            把DataTable转换成ArrayList
+            </summary>
+            <param name="data">DataTable</param>
+            <returns>ArrayList</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.MySqlDriver.MySqlDB.ConvertToModel``1(System.Data.DataTable)" -->
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.MySqlDriver.MySqlDB.SelectListForIn(System.String,System.Collections.Hashtable,System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="sql"></param>
+            <param name="args"></param>
+            <param name="InIds"></param>
+            <param name="IsNormalSmallOrBig"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.OracleDriver.GetOracleConnection.instance">
+            
+             定义公共静态属性instance，外部调用
+            
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.OracleDriver.OracleDB.DataBulkCopyByDataTable(System.String,System.Data.DataTable)">
+            <summary>
+            /  批量导入
+            </summary>
+            <param name="dataTableName">表名</param>
+            <param name="sourceDataTable">数据表</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.OracleDriver.OracleDB.ExcuteForNewID(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+            获取自动增长的ID值
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>decimal</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.OracleDriver.OracleDB.Execute(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+             增删改执行SQL带参数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>INT</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.OracleDriver.OracleDB.ExecuteProc(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+             存过过程新增，删除，更新
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>INT</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.OracleDriver.OracleDB.GetTotalRecordWithParameter(System.String,System.Collections.Hashtable)">
+            <summary>
+            获取集合总个数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>object</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.OracleDriver.OracleDB.Select(System.String,System.Collections.Hashtable)">
+            <summary>
+            SQL 查询语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.OracleDriver.OracleDB.SelectList(System.String,System.Collections.Hashtable,System.Int32)">
+            <summary>
+            SQL 查询语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.OracleDriver.OracleDB.SelectDataTable(System.String,System.Collections.Hashtable)">
+            <summary>
+            
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.OracleDriver.OracleDB.SelectsPecialProc(System.String,System.Collections.Hashtable)">
+            <summary>
+            特殊存储过程【参数是表】
+            </summary>
+            <param name="sql">存储过程名</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.OracleDriver.OracleDB.SetArgs(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+             SQL语句参数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.OracleDriver.OracleDB.SetArgsProc(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+             存储过程参数私有
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.OracleDriver.OracleDB.DataTable2ArrayList(System.Data.DataTable)">
+            <summary>
+            把DataTable转换成ArrayList
+            </summary>
+            <param name="data">DataTable</param>
+            <returns>ArrayList</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.OracleDriver.OracleDB.SetSpecialArgsProc(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+            存储过程把表作为变量来传递
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.OracleDriver.OracleDB.DataTable2List(System.Data.DataTable,System.Int32)">
+            <summary>
+            把DataTable转换成ArrayList
+            </summary>
+            <param name="data">DataTable</param>
+            <returns>ArrayList</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.OracleDriver.OracleDB.ConvertToModel``1(System.Data.DataTable)" -->
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.PostgreSqlDriver.GetPostgreSqlConnection.instance">
+            
+             定义公共静态属性instance，外部调用
+            
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.PostgreSqlDriver.PostgreSqlDB.DataBulkCopyByDataTable(System.String,System.Data.DataTable)">
+            <summary>
+            /  批量导入
+            </summary>
+            <param name="dataTableName">表名</param>
+            <param name="sourceDataTable">数据表</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.PostgreSqlDriver.PostgreSqlDB.ExcuteForNewID(System.String,System.Collections.Hashtable)">
+            <summary>
+            获取自动增长的ID值
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>decimal</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.PostgreSqlDriver.PostgreSqlDB.Execute(System.String,System.Collections.Hashtable)">
+            <summary>
+             增删改执行SQL带参数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>INT</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.PostgreSqlDriver.PostgreSqlDB.ExecuteProc(System.String,System.Collections.Hashtable)">
+            <summary>
+             存过过程新增，删除，更新
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>INT</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.PostgreSqlDriver.PostgreSqlDB.GetTotalRecordWithParameter(System.String,System.Collections.Hashtable)">
+            <summary>
+            获取集合总个数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>object</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.PostgreSqlDriver.PostgreSqlDB.Select(System.String,System.Collections.Hashtable)">
+            <summary>
+            SQL 查询语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.PostgreSqlDriver.PostgreSqlDB.SelectList(System.String,System.Collections.Hashtable)">
+            <summary>
+             SQL 查询语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>动态List</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.PostgreSqlDriver.PostgreSqlDB.SelectDataTable(System.String,System.Collections.Hashtable)">
+            <summary>
+            
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.PostgreSqlDriver.PostgreSqlDB.SelectDataTable(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+            
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.PostgreSqlDriver.PostgreSqlDB.SelectsPecialProc(System.String,System.Collections.Hashtable)">
+            <summary>
+            特殊存储过程【参数是表】
+            </summary>
+            <param name="sql">存储过程名</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.PostgreSqlDriver.PostgreSqlDB.SetArgs(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+             SQL语句参数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.PostgreSqlDriver.PostgreSqlDB.SetArgsProc(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+             存储过程参数私有
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.PostgreSqlDriver.PostgreSqlDB.DataTable2ArrayList(System.Data.DataTable)">
+            <summary>
+            把DataTable转换成ArrayList
+            </summary>
+            <param name="data">DataTable</param>
+            <returns>ArrayList</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.PostgreSqlDriver.PostgreSqlDB.SetSpecialArgsProc(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+            存储过程把表作为变量来传递
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.PostgreSqlDriver.PostgreSqlDB.DataTable2List(System.Data.DataTable)">
+            <summary>
+            把DataTable转换成ArrayList
+            </summary>
+            <param name="data">DataTable</param>
+            <returns>ArrayList</returns>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SFtp.Connected">
+            <summary>
+            连接状态
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SFtp.#ctor(System.String,System.Int32,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="host">sftp的IP</param>
+            <param name="port">sftp的端口</param>
+            <param name="username">sftp的帐户</param>
+            <param name="password">sftp的密码</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SFtp.Connect">
+            <summary>
+            连接sftp服务器
+            </summary>
+            <returns>连接状态</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SFtp.Disconnect">
+            <summary>
+            断开连接
+            </summary>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SFtp.Put(System.String,System.String)">
+            <summary>
+            上传文件
+            </summary>
+            <param name="localPath">本地文件路径</param>
+            <param name="remotePath">服务器端文件路径</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SFtp.Put(System.Byte[],System.String)">
+            <summary>
+            上传文字字节数据
+            </summary>
+            <param name="fileByteArr">文件内容字节</param>
+            <param name="remotePath">上传到服务器的路径</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SFtp.Get(System.String,System.String)">
+            <summary>
+            将sftp服务器的文件下载本地
+            </summary>
+            <param name="remotePath">服务器上的路径</param>
+            <param name="localPath">本地的路径</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SFtp.Delete(System.String)">
+            <summary>
+             删除ftp服务器上的文件
+            </summary>
+            <param name="remoteFile">服务器上的路径</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SFtp.GetFileList(System.String,System.String)">
+            <summary>
+            获取ftp服务器上指定路径上的指定前缀的文件名列表
+            </summary>
+            <param name="remotePath">服务器上的路径</param>
+            <param name="fileSuffix">文件名前缀</param>
+            <returns></returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SFtp.Move(System.String,System.String)">
+            <summary>
+            ftp服务器端文件移动
+            </summary>
+            <param name="oldRemotePath">原来服务器上路径</param>
+            <param name="newRemotePath">移动后服务器上新路径</param>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SQLiteDriver.GetSQLiteConnection.instance">
+            
+             定义公共静态属性instance，外部调用
+            
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SQLiteDriver.SQLiteDB.DataBulkCopyByDataTable(System.String,System.Data.DataTable)">
+            <summary>
+            /  批量导入
+            </summary>
+            <param name="dataTableName">表名</param>
+            <param name="sourceDataTable">数据表</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SQLiteDriver.SQLiteDB.ExcuteForNewID(System.String,System.Collections.Hashtable)">
+            <summary>
+            获取自动增长的ID值
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>decimal</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SQLiteDriver.SQLiteDB.Execute(System.String,System.Collections.Hashtable)">
+            <summary>
+             增删改执行SQL带参数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>INT</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SQLiteDriver.SQLiteDB.ExecuteProc(System.String,System.Collections.Hashtable)">
+            <summary>
+             存过过程新增，删除，更新
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>INT</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SQLiteDriver.SQLiteDB.GetTotalRecordWithParameter(System.String,System.Collections.Hashtable)">
+            <summary>
+            获取集合总个数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>object</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SQLiteDriver.SQLiteDB.Select(System.String,System.Collections.Hashtable)">
+            <summary>
+            SQL 查询语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SQLiteDriver.SQLiteDB.SelectList(System.String,System.Collections.Hashtable)">
+            <summary>
+             SQL 查询语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>动态List</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SQLiteDriver.SQLiteDB.SelectListModel``1(System.String,System.Collections.Hashtable)" -->
+        <!-- Badly formed XML comment ignored for member "M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SQLiteDriver.SQLiteDB.ConvertToModel``1(System.Data.DataTable)" -->
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SQLiteDriver.SQLiteDB.SelectDataTable(System.String,System.Collections.Hashtable)">
+            <summary>
+            
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SQLiteDriver.SQLiteDB.SelectDataTable(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+            
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SQLiteDriver.SQLiteDB.SelectsPecialProc(System.String,System.Collections.Hashtable)">
+            <summary>
+            特殊存储过程【参数是表】
+            </summary>
+            <param name="sql">存储过程名</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SQLiteDriver.SQLiteDB.SetArgs(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+             SQL语句参数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SQLiteDriver.SQLiteDB.SetArgsProc(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+             存储过程参数私有
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SQLiteDriver.SQLiteDB.DataTable2ArrayList(System.Data.DataTable)">
+            <summary>
+            把DataTable转换成ArrayList
+            </summary>
+            <param name="data">DataTable</param>
+            <returns>ArrayList</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SQLiteDriver.SQLiteDB.DataTable2List(System.Data.DataTable)">
+            <summary>
+            把DataTable转换成ArrayList
+            </summary>
+            <param name="data">DataTable</param>
+            <returns>ArrayList</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SQLiteDriver.SQLiteDB.SetSpecialArgsProc(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+            存储过程把表作为变量来传递
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="P:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SqlServerDriver.GetSqlServerConnection.instance">
+            
+             定义公共静态属性instance，外部调用
+            
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SqlServerDriver.SqlServerDB.DataBulkCopyByDataTable(System.String,System.Data.DataTable)">
+            <summary>
+            /  批量导入
+            </summary>
+            <param name="dataTableName">表名</param>
+            <param name="sourceDataTable">数据表</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SqlServerDriver.SqlServerDB.ExcuteForNewID(System.String,System.Collections.Hashtable)">
+            <summary>
+            获取自动增长的ID值
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>decimal</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SqlServerDriver.SqlServerDB.Execute(System.String,System.Collections.Hashtable)">
+            <summary>
+             增删改执行SQL带参数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>INT</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SqlServerDriver.SqlServerDB.ExecuteProc(System.String,System.Collections.Hashtable)">
+            <summary>
+             存过过程新增，删除，更新
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>INT</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SqlServerDriver.SqlServerDB.GetTotalRecordWithParameter(System.String,System.Collections.Hashtable)">
+            <summary>
+            获取集合总个数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>object</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SqlServerDriver.SqlServerDB.Select(System.String,System.Collections.Hashtable)">
+            <summary>
+            SQL 查询语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SqlServerDriver.SqlServerDB.SelectList(System.String,System.Collections.Hashtable)">
+            <summary>
+             SQL 查询语句
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>动态List</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SqlServerDriver.SqlServerDB.SelectDataTable(System.String,System.Collections.Hashtable)">
+            <summary>
+            
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SqlServerDriver.SqlServerDB.SelectDataTable(System.String,System.Collections.Hashtable,System.Data.Common.DbTransaction)">
+            <summary>
+            
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SqlServerDriver.SqlServerDB.SelectsPecialProc(System.String,System.Collections.Hashtable)">
+            <summary>
+            特殊存储过程【参数是表】
+            </summary>
+            <param name="sql">存储过程名</param>
+            <param name="args">参数</param>
+            <returns>ArrayList动态数组</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SqlServerDriver.SqlServerDB.SetArgs(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+             SQL语句参数
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SqlServerDriver.SqlServerDB.SetArgsProc(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+             存储过程参数私有
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SqlServerDriver.SqlServerDB.DataTable2ArrayList(System.Data.DataTable)">
+            <summary>
+            把DataTable转换成ArrayList
+            </summary>
+            <param name="data">DataTable</param>
+            <returns>ArrayList</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SqlServerDriver.SqlServerDB.DataTable2List(System.Data.DataTable)">
+            <summary>
+            把DataTable转换成ArrayList
+            </summary>
+            <param name="data">DataTable</param>
+            <returns>ArrayList</returns>
+        </member>
+        <member name="M:NetCoreDBModule.NetCoreDB.DBDriver.RemoteDriver.SqlServerDriver.SqlServerDB.SetSpecialArgsProc(System.String,System.Collections.Hashtable,System.Data.IDbCommand)">
+            <summary>
+            存储过程把表作为变量来传递
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="args">参数</param>
+            <param name="cmd">命令Command</param>
+        </member>
+    </members>
+</doc>

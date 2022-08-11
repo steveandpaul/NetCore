@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MemoryCacheModule.InMemoryCache</name>
+    </assembly>
+    <members>
+        <member name="T:MemoryCacheModule.InMemoryCache.MemoryCacheHelper">
+            <summary>
+            基于MemoryCache的缓存辅助类 这里其实可以做成静态类和里面的方法做成静态方法，不需要依赖注入
+            但是这里为了框架的一致性使用了依赖注入，把这个缓存类做成了非静态
+            </summary>
+        </member>
+    </members>
+</doc>

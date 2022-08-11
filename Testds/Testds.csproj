@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.1.0" />
+    <PackageReference Include="Fleck" Version="1.2.0" />
+    <PackageReference Include="Furion" Version="2.18.3" />
+    <PackageReference Include="Furion.Extras.ObjectMapper.Mapster" Version="2.18.3" />
+    <PackageReference Include="JWT" Version="9.0.3" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.20.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.11.1" />
+    <PackageReference Include="Autofac" Version="6.1.0" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.1.0" />
+    <PackageReference Include="CSRedisCore" Version="3.6.8" />
+    <PackageReference Include="Furion.Extras.Authentication.JwtBearer" Version="2.18.3" />
+    <PackageReference Include="Furion.Extras.DatabaseAccessor.SqlSugar" Version="2.18.3" />
+    <PackageReference Include="MySql.Data" Version="8.0.21" />
+    <PackageReference Include="NewLife.Ftp" Version="1.0.2019.707" />
+    <PackageReference Include="NewLife.Redis" Version="4.1.2022.801" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.2.2" />
+    <PackageReference Include="RRQMSocket.RPC" Version="8.2.3" />
+    <PackageReference Include="StackExchange.Redis" Version="2.2.50" />
+    <PackageReference Include="System.Data.Odbc" Version="5.0.0" />
+    <PackageReference Include="System.Data.OleDb" Version="4.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="NetCoreDBModule.NetCoreDB">
+      <HintPath>..\lib\NetCoreDBModule.NetCoreDB.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

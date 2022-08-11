@@ -1,0 +1,54 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net5.0</TargetFrameworks>
+    <LangVersion>preview</LangVersion>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <AssemblyName>NetCoreDBModule.NetCoreDB</AssemblyName>
+    <RootNamespace>NetCoreDBModule.NetCoreDB</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <!--<OutputPath>E:\Test\WebApplication1\library\netcoreapp3.1</OutputPath>-->
+    <DocumentationFile></DocumentationFile>
+    <OutputPath>C:\Users\DELL\Desktop\wf\lib\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+   
+    <PackageReference Include="Autofac" Version="6.1.0" />
+   
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="2.1.2" />
+   
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="3.1.3" />
+    <PackageReference Include="MongoDB.Driver" Version="2.3.0-beta1" />
+    <PackageReference Include="MySql.Data" Version="8.0.18" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Npgsql" Version="4.1.2" />
+    <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="3.21.1" />
+    <PackageReference Include="SSH.NET" Version="2016.1.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+    <PackageReference Include="System.Data.Odbc" Version="5.0.0" />
+    <PackageReference Include="System.Data.OleDb" Version="4.6.0" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.113.1" />
+    <PackageReference Include="Z.BulkOperations" Version="3.0.36" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DBDriver\RemoteDriver\MySqlDriver\" />
+    <Folder Include="DBDriver\RemoteDriver\OracleDriver\" />
+    <Folder Include="DBDriver\RemoteDriver\PostgreSqlDriver\" />
+    <Folder Include="DBDriver\RemoteDriver\SQLiteDriver\" />
+    <Folder Include="DBDriver\RemoteDriver\SqlServerDriver\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="MemoryCacheModule.InMemoryCache">
+      <HintPath>..\lib\MemoryCacheModule.InMemoryCache.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
